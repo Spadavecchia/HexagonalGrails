@@ -1,7 +1,4 @@
 package hexagonalgrails
-
-
-
 import org.junit.*
 import grails.test.mixin.*
 
@@ -26,20 +23,20 @@ class BookControllerTests {
 
         def model = controller.list()
 
-        assert model.bookInstanceList.size() == 0
-        assert model.bookInstanceTotal == 0
+        assert model.instanceList.size() == 0
+        assert model.instanceTotal == 0
     }
 
     void testCreate() {
         def model = controller.create()
 
-        assert model.bookInstance != null
+        assert model.instance != null
     }
 
     void testSave() {
         controller.save()
 
-        assert model.bookInstance != null
+        assert model.instance != null
         assert view == '/book/create'
 
         response.reset()
@@ -67,7 +64,7 @@ class BookControllerTests {
 
         def model = controller.show()
 
-        assert model.bookInstance == book
+        assert model.instance == book
     }
 
     void testEdit() {
@@ -85,7 +82,7 @@ class BookControllerTests {
 
         def model = controller.edit()
 
-        assert model.bookInstance == book
+        assert model.instance == book
     }
 
     void testUpdate() {
@@ -110,7 +107,7 @@ class BookControllerTests {
         controller.update()
 
         assert view == "/book/edit"
-        assert model.bookInstance != null
+        assert model.instance != null
 
         book.clearErrors()
 
@@ -130,8 +127,8 @@ class BookControllerTests {
         controller.update()
 
         assert view == "/book/edit"
-        assert model.bookInstance != null
-        assert model.bookInstance.errors.getFieldError('version')
+        assert model.instance != null
+        assert model.instance.errors.getFieldError('version')
         assert flash.message != null
     }
 
